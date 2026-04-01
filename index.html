@@ -10,89 +10,97 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 background:#f5f5f5;
 }
 
-/* HEADER */
-.header{
+/* ===== HEADER ===== */
+header{
+height:55px;
 background:#ffffff;
-padding:15px;
 display:flex;
 align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+padding:0 15px;
+box-shadow:0 2px 5px rgba(0,0,0,0.08);
 position:sticky;
 top:0;
-z-index:999;
-}
-
-.menu-btn{
-font-size:24px;
-cursor:pointer;
-margin-right:15px;
-}
-
-.title{
-font-weight:bold;
-font-size:18px;
-}
-
-/* SIDEBAR */
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:white;
-box-shadow:2px 0 10px rgba(0,0,0,0.1);
-transition:0.3s;
-padding-top:60px;
 z-index:1000;
 }
 
-.sidebar a{
-display:block;
-padding:15px 20px;
-text-decoration:none;
-color:#333;
-border-bottom:1px solid #eee;
+.menu-btn{
+font-size:22px;
+cursor:pointer;
 }
 
-.sidebar a:hover{
-background:#f5f5f5;
+/* ===== SIDEBAR ===== */
+.sidebar{
+position:fixed;
+top:0;
+left:-260px;
+width:260px;
+height:100%;
+background:#ffffff;
+box-shadow:2px 0 10px rgba(0,0,0,0.1);
+transition:0.3s;
+z-index:2000;
 }
 
 .sidebar.active{
 left:0;
 }
 
-/* CONTAINER */
-.container{
-max-width:900px;
-margin:auto;
-padding:20px;
+.sidebar-header{
+display:flex;
+align-items:center;
+padding:15px;
+border-bottom:1px solid #eee;
 }
 
-/* POST */
+.close-btn{
+font-size:20px;
+cursor:pointer;
+margin-right:10px;
+}
+
+.sidebar a{
+display:block;
+padding:15px;
+text-decoration:none;
+color:#333;
+border-bottom:1px solid #f1f1f1;
+transition:0.2s;
+}
+
+.sidebar a:hover{
+background:#f5f5f5;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+padding:15px;
+max-width:900px;
+margin:auto;
+}
+
+/* ===== POST ===== */
 .post{
 background:white;
-padding:18px;
+padding:15px;
 border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-transition:0.2s;
-cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+transition:0.25s;
+position:relative;
 }
 
 .post:hover{
 transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+box-shadow:0 15px 30px rgba(0,0,0,0.12);
 }
 
-.post-header{
+.post-top{
 display:flex;
 justify-content:space-between;
 align-items:flex-start;
@@ -101,8 +109,8 @@ gap:10px;
 
 .post-title{
 font-weight:bold;
-font-size:16px;
-flex:1;
+font-size:15px;
+line-height:1.4;
 }
 
 .buy-btn{
@@ -117,43 +125,43 @@ font-size:14px;
 }
 
 .buy-btn:hover{
-background:#d60000;
+background:#cc0000;
 }
 
-.meta{
-margin-top:6px;
-font-size:12px;
+/* ===== BADGES ===== */
+.badges{
+margin-top:10px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
 }
 
-.stock{
-display:inline-block;
-border:1px solid purple;
-color:purple;
-padding:2px 6px;
-border-radius:4px;
-font-size:11px;
+.badge{
+border:1px solid #ccc;
+padding:4px 8px;
+border-radius:5px;
+font-size:13px;
+background:#fff;
 }
 
 .price{
-margin-top:4px;
+border:1px solid #ff0000;
+color:#ff0000;
+padding:4px 8px;
+border-radius:5px;
 font-size:13px;
-color:#111;
 }
 
 /* MOBILE */
 @media(max-width:600px){
 
-.title{
-font-size:15px;
-}
-
-.post-title{
-font-size:14px;
+.post-top{
+flex-direction:column;
 }
 
 .buy-btn{
-padding:8px 12px;
-font-size:12px;
+width:100%;
 }
 
 }
@@ -163,32 +171,39 @@ font-size:12px;
 
 <body>
 
+<header>
+<div class="menu-btn" onclick="openMenu()">☰</div>
+</header>
+
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
+
+<div class="sidebar-header">
+<div class="close-btn" onclick="closeMenu()">←</div>
+<b>MENU</b>
+</div>
+
 <a href="#">Trang chủ</a>
 <a href="#">Nạp tiền</a>
 <a href="#">Hỗ trợ</a>
-</div>
 
-<div class="header">
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div class="title">WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG</div>
 </div>
 
 <div class="container">
 
 <div class="post">
-    
-<div class="post-header">
+
+<div class="post-top">
 <div class="post-title">
-tài khoản tạo 2-6 tháng, mail lấy được code, 1000-2000bb
+TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 </div>
 
-<button class="buy-btn">Mua ngay</button>
+<button class="buy-btn">MUA NGAY</button>
 </div>
 
-<div class="meta">
-<div class="stock">số lượng:10</div>
-<div class="price">giá 10000đ</div>
+<div class="badges">
+<div class="badge">SL: 10</div>
+<div class="price">Giá 10000đ</div>
 </div>
 
 </div>
@@ -196,8 +211,12 @@ tài khoản tạo 2-6 tháng, mail lấy được code, 1000-2000bb
 </div>
 
 <script>
-function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("active");
+function openMenu(){
+document.getElementById("sidebar").classList.add("active");
+}
+
+function closeMenu(){
+document.getElementById("sidebar").classList.remove("active");
 }
 </script>
 
