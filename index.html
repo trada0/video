@@ -4,45 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG</title>
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
-body{
-background:#f5f5f5;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+body{background:#f5f5f5}
 
 /* HEADER */
 .header{
+position:fixed;
+top:0;left:0;right:0;
 background:#eee;
-padding:14px;
-position:sticky;
-top:0;
+border-bottom:1px solid #ccc;
+padding:12px 16px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-bottom:1px solid #ddd;
+z-index:1000;
 }
 
 .title{
-font-size:clamp(14px,2vw,20px);
 font-weight:bold;
+font-size:20px;
 text-align:center;
+max-width:80%;
 }
 
 .menu-btn{
 position:absolute;
 left:10px;
 cursor:pointer;
-font-size:20px;
 border:1px solid #999;
-padding:4px 8px;
-background:#fff;
+padding:6px 10px;
+background:#fff
 }
 
 .user-box{
@@ -50,241 +42,245 @@ position:absolute;
 right:10px;
 display:flex;
 align-items:center;
-gap:6px;
+gap:8px;
 cursor:pointer;
-font-size:clamp(12px,2vw,14px);
 }
-
-.avatar{
-width:28px;
-height:28px;
-border-radius:50%;
-background:#ccc;
+.user-box img{
+width:32px;
+height:32px;
+border-radius:50%
 }
 
 /* SIDEBAR */
 .sidebar{
 position:fixed;
-left:-260px;
 top:0;
+left:-260px;
 width:260px;
 max-width:80%;
 height:100%;
-background:white;
-border-right:1px solid #ddd;
-transition:0.3s;
-padding-top:60px;
-z-index:999;
+background:#fff;
+border-right:1px solid #ccc;
+transition:.3s;
+z-index:1200;
+padding-top:60px
 }
 
-.sidebar.active{
-left:0;
+.sidebar.open{left:0}
+
+.sidebar .close{
+position:absolute;
+top:10px;
+right:10px;
+border:1px solid #aaa;
+padding:5px 8px;
+cursor:pointer
 }
 
 .sidebar a{
 display:block;
-padding:15px;
+padding:12px 16px;
 border-bottom:1px solid #eee;
-cursor:pointer;
+cursor:pointer
 }
 
-.close-menu{
-position:absolute;
-top:10px;
-right:10px;
-cursor:pointer;
-border:1px solid #999;
-padding:2px 6px;
-}
+.sidebar a:hover{background:#f2f2f2}
 
 /* CONTAINER */
 .container{
-width:100%;
 max-width:900px;
-margin:auto;
-padding:15px;
+width:100%;
+margin:100px auto;
+padding:12px;
 }
 
 /* POST */
 .post{
-background:white;
+background:#fff;
 padding:16px;
-border-radius:6px;
-transition:0.2s;
+border-radius:8px;
+box-shadow:0 0 0 rgba(0,0,0,0);
+transition:.2s;
+position:relative;
+width:100%;
 }
 
 .post:hover{
-transform:translateY(-4px);
-box-shadow:0 5px 15px rgba(0,0,0,0.15);
-}
-
-.post-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
+transform:translateY(-2px)
 }
 
 .post-title{
-flex:1;
-min-width:200px;
-font-size:clamp(13px,2vw,16px);
+font-weight:bold;
+margin-bottom:8px;
+padding-right:150px;
+line-height:1.4
 }
 
 .buy-btn{
+position:absolute;
+right:16px;
+top:16px;
 background:red;
-color:white;
-padding:10px 16px;
+color:#fff;
 border:none;
-cursor:pointer;
+padding:10px 18px;
 font-weight:bold;
-white-space:nowrap;
+cursor:pointer;
+border-radius:4px;
+white-space:nowrap
 }
 
 .meta{
-margin-top:8px;
 display:flex;
-gap:10px;
-flex-wrap:wrap;
+flex-direction:column;
+gap:6px;
+margin-top:6px
 }
 
 .box{
 border:1px solid #999;
-padding:4px 8px;
-font-size:13px;
+padding:5px 10px;
+display:inline-block;
+width:max-content;
+font-size:14px
 }
 
 /* POPUP */
-.popup{
+.overlay{
 position:fixed;
 top:0;
 left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.4);
 display:none;
 align-items:center;
 justify-content:center;
-padding:15px;
-z-index:1000;
+z-index:2000;
+padding:10px
 }
 
-.popup-box{
-background:white;
-padding:20px;
+.popup{
+background:#fff;
+padding:16px;
+border-radius:8px;
+min-width:280px;
+max-width:500px;
 width:100%;
-max-width:420px;
-border-radius:6px;
-position:relative;
+position:relative
 }
 
-.close{
+.popup h3{
+margin-bottom:10px;
+font-size:16px;
+line-height:1.4
+}
+
+.popup .close{
 position:absolute;
+top:8px;
 right:10px;
-top:10px;
-cursor:pointer;
+cursor:pointer
 }
 
-.input-row{
+.row{
 display:flex;
 gap:10px;
-margin:12px 0;
+margin:8px 0;
 align-items:center;
 }
 
-.input-row input{
+.row input{
 flex:1;
 padding:8px;
 }
 
-.pay-btn{
-width:100%;
-padding:12px;
-background:#222;
-color:white;
-border:none;
-cursor:pointer;
-margin-top:10px;
+.row label{
+flex:2;
+font-size:14px
 }
 
-.support-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:20px;
-}
-
-.support-item{
-border:1px solid #999;
-padding:15px;
+.button{
+padding:10px;
+border:1px solid #333;
 text-align:center;
 cursor:pointer;
+margin-top:10px;
+user-select:none
 }
 
 .ok-btn{
-border:2px solid green;
-padding:10px;
-text-align:center;
-margin-top:15px;
-cursor:pointer;
+border:2px solid #2ecc71
 }
 
-.user-dropdown{
+/* USER DROPDOWN */
+.dropdown{
 position:absolute;
-right:0;
-top:40px;
-background:white;
-border:1px solid #ddd;
+top:50px;
+right:10px;
+background:#fff;
+border:1px solid #ccc;
 display:none;
-min-width:160px;
+min-width:180px
 }
 
-.user-dropdown div{
-padding:10px;
+.dropdown div{
+padding:10px 16px;
 cursor:pointer;
-border-bottom:1px solid #eee;
+border-bottom:1px solid #eee
+}
+
+.dropdown div:hover{
+background:#f2f2f2
 }
 
 /* MOBILE */
-@media (max-width:600px){
+@media(max-width:768px){
 
-.post{
-padding:12px;
+.title{
+font-size:16px;
+max-width:65%;
+}
+
+.post-title{
+padding-right:0;
+margin-bottom:45px;
 }
 
 .buy-btn{
-width:100%;
-margin-top:8px;
+position:absolute;
+top:auto;
+bottom:12px;
+right:12px;
+padding:8px 12px;
+font-size:13px;
 }
 
-.post-header{
-flex-direction:column;
-align-items:flex-start;
+.container{
+margin-top:90px
 }
+
+}
+
+@media(max-width:480px){
 
 .user-box span{
-display:none;
+display:none
 }
 
-.popup-box{
-max-width:100%;
+.title{
+font-size:14px
+}
+
+.box{
+font-size:12px
 }
 
 }
-
 </style>
 </head>
-
 <body>
-
-<div class="sidebar" id="sidebar">
-<div class="close-menu" onclick="toggleMenu()">←</div>
-<a onclick="location.reload()">Trang chủ</a>
-<a onclick="showUpdate()">Nạp tiền</a>
-<a onclick="showSupport()">Hỗ trợ</a>
-<a onclick="showUpdate()">Lịch sử giao dịch</a>
-</div>
 
 <div class="header">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -292,115 +288,122 @@ max-width:100%;
 
 <div class="user-box" onclick="toggleUser()">
 <span>Xin chào, vangng</span>
-<div class="avatar"></div>
+<img src="https://d2eioyamun8mp1.cloudfront.net/images/1775034866858_lpwEAxFShp.jpeg">
+</div>
+</div>
 
-<div class="user-dropdown" id="userDrop">
+<div class="dropdown" id="userMenu">
 <div>Thông Tin Tài Khoản</div>
-<div>Đăng Xuất</div>
+<div onclick="logout()">Đăng Xuất</div>
 </div>
-</div>
+
+<div class="sidebar" id="sidebar">
+<div class="close" onclick="toggleMenu()">←</div>
+<a onclick="reloadPage()">Trang chủ</a>
+<a onclick="showUpdate()">Nạp tiền</a>
+<a onclick="showSupport()">Hỗ trợ</a>
+<a>Lịch sử giao dịch</a>
 </div>
 
 <div class="container">
-
 <div class="post">
-<div class="post-header">
-
-<div class="post-title">
-TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
+<div class="post-title">TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE</div>
+<button class="buy-btn" onclick="showBuy()">Mua ngay</button>
 
 <div class="meta">
 <div class="box">SL: 10</div>
 <div class="box">Giá 10000đ</div>
 </div>
-
 </div>
-
-<button class="buy-btn" onclick="showBuy()">Mua ngay</button>
-
-</div>
-</div>
-
 </div>
 
 <!-- SUPPORT -->
-<div class="popup" id="supportPopup">
-<div class="popup-box">
-<div class="close" onclick="closePopup()">X</div>
-
+<div class="overlay" id="supportPopup">
+<div class="popup">
+<div class="close" onclick="closePopup('supportPopup')">✖</div>
 <h3>Hỗ trợ</h3>
-
-<div class="support-grid">
-<div class="support-item" onclick="window.open('https://zalo.me/0347241585')">Zalo</div>
-<div class="support-item" onclick="window.open('https://www.facebook.com/profile.php?id=1815703088')">Facebook</div>
-</div>
-
+<div class="button" onclick="window.open('https://zalo.me/0347241585')">Zalo</div>
+<div class="button" onclick="window.open('https://www.facebook.com/profile.php?id=1815703088')">Facebook</div>
 </div>
 </div>
 
 <!-- BUY -->
-<div class="popup" id="buyPopup">
-<div class="popup-box">
-<div class="close" onclick="closePopup()">X</div>
-
+<div class="overlay" id="buyPopup">
+<div class="popup">
+<div class="close" onclick="closePopup('buyPopup')">✖</div>
 <h3>TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE</h3>
 
-<div class="input-row">
-<div style="flex:2">SỐ LƯỢNG CẦN MUA</div>
-<input type="number" id="qty" value="1" oninput="calc()">
+<div class="row">
+<label>SỐ LƯỢNG CẦN MUA</label>
+<input type="number" id="qty" value="1" min="1" oninput="calc()">
 </div>
 
-<div class="box">
-THÀNH TIỀN: <span id="total">10000</span>đ
+<div class="row">
+<label>THÀNH TIỀN</label>
+<input type="text" id="total" readonly>
 </div>
 
-<button class="pay-btn" onclick="showUpdate()">THANH TOÁN</button>
-
+<div class="button" onclick="showUpdate()">THANH TOÁN</div>
 </div>
 </div>
 
 <!-- UPDATE -->
-<div class="popup" id="updatePopup">
-<div class="popup-box">
-<div>tính năng đang được update</div>
-<div class="ok-btn" onclick="closePopup()">OK</div>
+<div class="overlay" id="updatePopup">
+<div class="popup">
+<div class="button">tính năng đang được update</div>
+<div class="button ok-btn" onclick="closePopup('updatePopup')">OK</div>
 </div>
 </div>
 
 <script>
+const price = 10000;
+
 function toggleMenu(){
-sidebar.classList.toggle("active")
+document.getElementById('sidebar').classList.toggle('open')
 }
 
 function showSupport(){
-closePopup()
-supportPopup.style.display="flex"
+document.getElementById('supportPopup').style.display='flex'
 }
 
 function showBuy(){
-closePopup()
-buyPopup.style.display="flex"
+document.getElementById('buyPopup').style.display='flex'
 calc()
 }
 
 function showUpdate(){
-closePopup()
-updatePopup.style.display="flex"
+closeAll()
+document.getElementById('updatePopup').style.display='flex'
 }
 
-function closePopup(){
-document.querySelectorAll(".popup").forEach(p=>p.style.display="none")
+function closePopup(id){
+document.getElementById(id).style.display='none'
+}
+
+function closeAll(){
+document.querySelectorAll('.overlay').forEach(e=>e.style.display='none')
 }
 
 function calc(){
-let price=10000
-let qty=document.getElementById("qty").value || 0
-total.innerText=price*qty
+let q = document.getElementById('qty').value || 0
+let t = q * price
+
+document.getElementById('total').value = t.toLocaleString() + 'đ'
 }
 
+function reloadPage(){ location.reload() }
+
 function toggleUser(){
-userDrop.style.display=
-userDrop.style.display=="block"?"none":"block"
+let m = document.getElementById('userMenu')
+m.style.display = m.style.display === 'block' ? 'none' : 'block'
+}
+
+function logout(){ alert('Đã đăng xuất') }
+
+window.onclick = function(e){
+if(e.target.classList.contains('overlay')){
+e.target.style.display='none'
+}
 }
 </script>
 
