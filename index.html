@@ -14,110 +14,116 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#f5f5f5;
+background:#f5f6fa;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-height:55px;
-background:#ffffff;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:60px;
+background:#fff;
 display:flex;
 align-items:center;
-padding:0 15px;
-box-shadow:0 2px 5px rgba(0,0,0,0.08);
-position:sticky;
-top:0;
-z-index:1000;
+justify-content:center;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+z-index:999;
 }
 
+.title{
+font-weight:bold;
+font-size:18px;
+}
+
+/* MENU BUTTON */
 .menu-btn{
+position:absolute;
+left:15px;
 font-size:22px;
 cursor:pointer;
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 .sidebar{
 position:fixed;
 top:0;
 left:-260px;
 width:260px;
 height:100%;
-background:#ffffff;
-box-shadow:2px 0 10px rgba(0,0,0,0.1);
+background:#fff;
+box-shadow:2px 0 8px rgba(0,0,0,0.15);
 transition:0.3s;
-z-index:2000;
+z-index:1000;
+padding-top:60px;
 }
 
 .sidebar.active{
 left:0;
 }
 
-.sidebar-header{
-display:flex;
-align-items:center;
-padding:15px;
-border-bottom:1px solid #eee;
-}
-
-.close-btn{
-font-size:20px;
-cursor:pointer;
-margin-right:10px;
-}
-
 .sidebar a{
 display:block;
 padding:15px;
+border-bottom:1px solid #eee;
 text-decoration:none;
 color:#333;
-border-bottom:1px solid #f1f1f1;
-transition:0.2s;
+font-weight:bold;
 }
 
 .sidebar a:hover{
-background:#f5f5f5;
+background:#f0f0f0;
 }
 
-/* ===== CONTAINER ===== */
+.close-btn{
+position:absolute;
+right:10px;
+top:15px;
+font-size:20px;
+cursor:pointer;
+}
+
+/* CONTAINER */
 .container{
-padding:15px;
+padding:80px 15px;
 max-width:900px;
 margin:auto;
 }
 
-/* ===== POST ===== */
+/* POST */
 .post{
-background:white;
+background:#fff;
 padding:15px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-transition:0.25s;
-position:relative;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+transition:0.3s;
+margin-bottom:20px;
 }
 
 .post:hover{
 transform:translateY(-5px);
-box-shadow:0 15px 30px rgba(0,0,0,0.12);
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .post-top{
 display:flex;
 justify-content:space-between;
-align-items:flex-start;
+align-items:center;
 gap:10px;
 }
 
 .post-title{
 font-weight:bold;
 font-size:15px;
-line-height:1.4;
 }
 
+/* BUY BUTTON */
 .buy-btn{
 background:red;
 color:white;
 border:none;
-padding:10px 16px;
+padding:10px 18px;
 border-radius:6px;
 cursor:pointer;
 font-weight:bold;
@@ -125,19 +131,18 @@ font-size:14px;
 }
 
 .buy-btn:hover{
-background:#cc0000;
+opacity:0.9;
 }
 
-/* ===== BADGES ===== */
-.badges{
-margin-top:10px;
+/* INFO BOX */
+.info{
+margin-top:8px;
 display:flex;
-flex-direction:column;
-align-items:flex-start;
-gap:6px;
+gap:8px;
+flex-wrap:wrap;
 }
 
-.badge{
+.box{
 border:1px solid #ccc;
 padding:4px 8px;
 border-radius:5px;
@@ -145,27 +150,52 @@ font-size:13px;
 background:#fff;
 }
 
-.price{
-border:1px solid #ff0000;
-color:#ff0000;
-padding:4px 8px;
-border-radius:5px;
-font-size:13px;
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.5);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.popup-content{
+background:#fff;
+padding:20px;
+border-radius:10px;
+width:280px;
+}
+
+.support-box{
+border:1px solid #ddd;
+padding:15px;
+margin-top:10px;
+text-align:center;
+cursor:pointer;
+border-radius:8px;
+font-weight:bold;
+}
+
+.support-box:hover{
+background:#f5f5f5;
 }
 
 /* MOBILE */
 @media(max-width:600px){
-
-.post-top{
-flex-direction:column;
+.post-title{
+font-size:14px;
 }
 
 .buy-btn{
-width:100%;
+padding:8px 14px;
+font-size:13px;
 }
-
 }
-
 </style>
 </head>
 
@@ -173,20 +203,16 @@ width:100%;
 
 <header>
 <div class="menu-btn" onclick="openMenu()">☰</div>
+<div class="title">WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG</div>
 </header>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-
-<div class="sidebar-header">
 <div class="close-btn" onclick="closeMenu()">←</div>
-<b>MENU</b>
-</div>
 
 <a href="#">Trang chủ</a>
 <a href="#">Nạp tiền</a>
-<a href="#">Hỗ trợ</a>
-
+<a href="#" onclick="openSupport()">Hỗ trợ</a>
 </div>
 
 <div class="container">
@@ -201,22 +227,51 @@ TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 <button class="buy-btn">MUA NGAY</button>
 </div>
 
-<div class="badges">
-<div class="badge">SL: 10</div>
-<div class="price">Giá 10000đ</div>
+<div class="info">
+<div class="box">SL: 10</div>
+<div class="box">Giá 10000đ</div>
 </div>
 
 </div>
 
+</div>
+
+<!-- POPUP SUPPORT -->
+<div class="popup" id="popup">
+<div class="popup-content">
+<b>Hỗ trợ</b>
+
+<div class="support-box"
+onclick="window.location.href='https://zalo.me/0347241585'">
+Zalo
+</div>
+
+<div class="support-box"
+onclick="window.location.href='https://www.facebook.com/profile.php?id=1815703088'">
+Facebook
+</div>
+
+</div>
 </div>
 
 <script>
 function openMenu(){
-document.getElementById("sidebar").classList.add("active");
+document.getElementById("sidebar").classList.add("active")
 }
 
 function closeMenu(){
-document.getElementById("sidebar").classList.remove("active");
+document.getElementById("sidebar").classList.remove("active")
+}
+
+function openSupport(){
+document.getElementById("popup").style.display="flex"
+}
+
+window.onclick=function(e){
+let popup=document.getElementById("popup")
+if(e.target==popup){
+popup.style.display="none"
+}
 }
 </script>
 
