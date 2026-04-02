@@ -6,163 +6,152 @@
 <title>WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif
+}
 
-body{background:#f5f5f5}
-
-/* LOGIN */
-.login{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+body{
 background:#f5f5f5;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:99999;
-}
-
-.login-box{
-background:white;
-padding:30px;
-width:100%;
-max-width:350px;
-box-shadow:0 0 15px rgba(0,0,0,.1);
-}
-
-.login-box input{
-width:100%;
-padding:10px;
-margin-top:10px;
-border:1px solid #ccc;
-}
-
-.login-btn{
-margin-top:15px;
-background:red;
-color:white;
-padding:10px;
-text-align:center;
-cursor:pointer;
-width:100%;
 }
 
 /* HEADER */
 .header{
-background:#eee;
+background:#e9e9e9;
 padding:15px;
+position:relative;
 text-align:center;
 font-weight:bold;
-position:sticky;
-top:0;
-z-index:100;
+font-size:20px;
 }
 
 .menu-btn{
 position:absolute;
-left:10px;
+left:15px;
 top:50%;
 transform:translateY(-50%);
 cursor:pointer;
+font-size:22px;
 border:1px solid #ccc;
 padding:5px 10px;
-background:white;
+background:white
 }
 
 .user-box{
 position:absolute;
-right:10px;
+right:15px;
 top:50%;
 transform:translateY(-50%);
 display:flex;
-gap:8px;
 align-items:center;
-cursor:pointer;
+gap:8px;
+cursor:pointer
 }
 
 .user-box img{
-width:32px;
-height:32px;
-border-radius:50%;
+width:35px;
+height:35px;
+border-radius:50%
 }
 
-@media(max-width:768px){
-.user-text{display:none}
+.username{
+display:none;
+font-size:14px;
+}
+
+@media(min-width:768px){
+.username{
+display:block
+}
 }
 
 /* SIDEBAR */
 .sidebar{
 position:fixed;
-left:-260px;
+left:-250px;
 top:0;
-width:260px;
+width:250px;
 height:100%;
 background:white;
 box-shadow:0 0 10px rgba(0,0,0,.2);
 transition:.3s;
-padding-top:60px;
-z-index:999;
+z-index:999
 }
 
-.sidebar.active{left:0}
+.sidebar.active{
+left:0
+}
 
-.sidebar div{
+.close-menu{
+text-align:right;
+padding:10px;
+cursor:pointer;
+border-bottom:1px solid #eee
+}
+
+.menu-item{
 padding:15px;
 border-bottom:1px solid #eee;
-cursor:pointer;
+cursor:pointer
 }
 
-.close-sidebar{
-position:absolute;
-top:10px;
-right:10px;
-border:1px solid #ccc;
-padding:5px;
-cursor:pointer;
+.menu-item:hover{
+background:#f2f2f2
 }
+
+/* CONTENT */
 
 .container{
 max-width:900px;
 margin:auto;
-padding:20px;
+padding:20px
 }
 
 .post{
 background:white;
 padding:15px;
-position:relative;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,.1);
 transition:.3s;
+position:relative
 }
 
 .post:hover{
 transform:translateY(-5px);
-box-shadow:0 5px 15px rgba(0,0,0,.2);
+box-shadow:0 10px 20px rgba(0,0,0,.2)
 }
 
-.post-title{
-padding-right:140px;
-font-weight:bold;
+.post-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
 }
 
 .buy-btn{
-position:absolute;
-right:15px;
-top:15px;
 background:red;
 color:white;
 border:none;
-padding:8px 15px;
+padding:10px 15px;
+font-size:16px;
 cursor:pointer;
-border-radius:4px;
+border-radius:5px
 }
 
-.sl,.price{
+.sl{
 border:1px solid #ccc;
 display:inline-block;
-padding:5px;
-margin-top:8px;
+padding:3px 10px;
+margin-top:10px
+}
+
+.price{
+border:1px solid #ccc;
+display:inline-block;
+padding:3px 10px;
+margin-top:5px
 }
 
 /* POPUP */
@@ -176,251 +165,302 @@ background:rgba(0,0,0,.5);
 display:none;
 align-items:center;
 justify-content:center;
-z-index:9999;
-padding:15px;
+z-index:9999
 }
 
 .popup-box{
 background:white;
 padding:20px;
-width:100%;
-max-width:400px;
-position:relative;
 border-radius:8px;
+min-width:300px;
+max-width:90%;
+position:relative
 }
 
-.popup-box .close{
+.close{
 position:absolute;
-top:8px;
-right:8px;
+top:5px;
+right:5px;
 border:1px solid #ccc;
-padding:3px 7px;
-cursor:pointer;
+padding:3px 8px;
+cursor:pointer
 }
 
-.popup-box .close:hover{
+.close:hover{
 background:red;
-color:white;
+color:white
 }
 
-.popup-box .btn{
+.input{
 width:100%;
-padding:10px;
-margin-top:10px;
-border:1px solid #ccc;
-cursor:pointer;
-border-radius:4px;
-text-align:center;
-}
-
-.popup-box .btn.green{
-border:2px solid green;
-}
-
-.input-row{
-display:flex;
-gap:10px;
-margin-top:10px;
-align-items:center;
-flex-wrap:wrap;
-}
-
-.input-row label{
-flex:1;
-font-weight:bold;
-}
-
-.input-row input{
-flex:1;
 padding:8px;
+margin:5px 0;
+border:1px solid #ccc
+}
+
+.btn{
+padding:10px;
+background:#2196f3;
+color:white;
+border:none;
+cursor:pointer;
+width:100%
+}
+
+.support-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:15px
+}
+
+.support-item{
 border:1px solid #ccc;
+padding:20px;
+text-align:center;
+cursor:pointer
+}
+
+.support-item:hover{
+background:#eee
+}
+
+.buy-grid{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:10px
+}
+
+.row{
+display:flex;
+gap:10px
+}
+
+.row div{
+border:1px solid #ccc;
+padding:10px;
+flex:1
+}
+
+.row input{
+width:100%;
+border:none;
+outline:none
+}
+
+.ok-btn{
+border:2px solid green;
+padding:10px;
+text-align:center;
+cursor:pointer;
+margin-top:10px
 }
 
 .dropdown{
 position:absolute;
-right:10px;
-top:55px;
+right:15px;
+top:60px;
 background:white;
 border:1px solid #ccc;
 display:none;
+z-index:999
 }
 
 .dropdown div{
 padding:10px;
-cursor:pointer;
-border-bottom:1px solid #eee;
+cursor:pointer
 }
 
 .dropdown div:hover{
-background:#f5f5f5;
-}
-
-@media(max-width:500px){
-.post-title{padding-right:0;margin-bottom:10px;}
-.buy-btn{position:relative;top:auto;right:auto;width:100%;margin-top:10px;}
+background:#eee
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div class="login" id="login">
-<div class="login-box">
-<h3>Đăng nhập</h3>
-<input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
-<div class="login-btn" onclick="login()">Đăng nhập</div>
-</div>
-</div>
-
-<div id="app" style="display:none">
-
 <div class="header">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG
+
 <div class="user-box" onclick="toggleUser()">
-<span class="user-text" id="hello"></span>
+<span class="username" id="hello"></span>
 <img src="https://d2eioyamun8mp1.cloudfront.net/images/1775035619870_jvaiHdVTeM.jpg">
 </div>
-<div class="dropdown" id="userDrop">
+
+<div class="dropdown" id="userMenu">
 <div>Thông Tin Tài Khoản</div>
 <div onclick="logout()">Đăng Xuất</div>
 </div>
+
 </div>
 
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-<div class="close-sidebar" onclick="toggleMenu()">←</div>
-<div onclick="location.reload()">Trang chủ</div>
-<div onclick="updatePopup()">Nạp tiền</div>
-<div onclick="openSupport()">Hỗ trợ</div>
-<div onclick="updatePopup()">Lịch sử giao dịch</div>
+<div class="close-menu" onclick="toggleMenu()">←</div>
+<div class="menu-item" onclick="reload()">Trang chủ</div>
+<div class="menu-item" onclick="coming()">Nạp tiền</div>
+<div class="menu-item" onclick="support()">Hỗ trợ</div>
+<div class="menu-item" onclick="coming()">Lịch sử giao dịch</div>
 </div>
 
 <div class="container">
 <div class="post">
-<div class="post-title">
+
+<div class="post-header">
+<div>
 TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 </div>
 
-<button class="buy-btn" onclick="openBuy()">Mua ngay</button>
+<button class="buy-btn" onclick="buy()">Mua ngay</button>
+</div>
 
-<div class="sl">Số lượng:10</div><br>
+<div class="sl">SL: 10</div>
+<br>
 <div class="price">Giá: 10000đ</div>
+
 </div>
 </div>
 
+<!-- LOGIN -->
+<div class="popup" id="login">
+<div class="popup-box">
+<div class="close" onclick="closeLogin()">X</div>
+<h3>Đăng nhập</h3>
+<input class="input" id="username" placeholder="username">
+<button class="btn" onclick="login()">Đăng nhập</button>
+</div>
 </div>
 
-<!-- POPUPS -->
-<!-- HỖ TRỢ -->
+<!-- SUPPORT -->
 <div class="popup" id="support">
 <div class="popup-box">
-<div class="close" onclick="closeAll()">X</div>
-<div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-<button class="btn" onclick="window.open('https://zalo.me/0347241585')">Zalo</button>
-<button class="btn" onclick="window.open('https://www.facebook.com/profile.php?id=1815703088')">Facebook</button>
+<div class="close" onclick="closeSupport()">X</div>
+<h3>Hỗ trợ</h3>
+
+<div class="support-grid">
+<div class="support-item" onclick="window.open('https://zalo.me/0347241585')">Zalo</div>
+<div class="support-item" onclick="window.open('https://www.facebook.com/profile.php?id=1815703088')">Facebook</div>
 </div>
+
 </div>
 </div>
 
-<!-- MUA -->
+<!-- BUY -->
 <div class="popup" id="buy">
 <div class="popup-box">
-<div class="close" onclick="closeAll()">X</div>
+<div class="close" onclick="closeBuy()">X</div>
 
-<div style="margin-bottom:10px; font-weight:bold;">TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE</div>
+<h4>
+TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
+</h4>
 
-<div class="input-row">
-<label>SỐ LƯỢNG CẦN MUA</label>
-<input type="number" id="qty" value="1" oninput="calc()">
+<div class="buy-grid">
+
+<div class="row">
+<div>SỐ LƯỢNG CẦN MUA</div>
+<div><input type="number" id="qty" value="1" oninput="calc()"></div>
 </div>
 
-<div style="margin-top:10px; text-align:center; font-weight:bold;">
-THÀNH TIỀN: <span id="total">10000</span>đ
+<div class="row">
+<div>THÀNH TIỀN</div>
+<div id="total">10000đ</div>
 </div>
 
-<div style="margin-top:15px;">
-<button class="btn green" onclick="updatePopup()">THANH TOÁN</button>
-</div>
+<div class="btn" onclick="coming()">THANH TOÁN</div>
 
 </div>
 </div>
+</div>
 
-<!-- UPDATE -->
-<div class="popup" id="update">
+<!-- COMING -->
+<div class="popup" id="coming">
 <div class="popup-box">
-<div class="close" onclick="closeAll()">X</div>
-<div style="font-size:18px;margin-bottom:10px;">
+<div style="font-size:18px">
 TÍNH NĂNG SẼ ĐƯỢC ADMIN UPDATE SAU
 </div>
-<div class="btn green" onclick="closeAll()">OK</div>
+
+<div class="ok-btn" onclick="closeComing()">OK</div>
 </div>
 </div>
 
 <script>
+
+let price = 10000
+
+window.onload=()=>{
+document.getElementById("login").style.display="flex"
+}
+
 function login(){
-let u=user.value
-let p=pass.value
-if(u && p){
-localStorage.setItem("user",u)
-start()
-}
-}
-
-function start(){
-let u=localStorage.getItem("user")
-if(!u)return
-login.style.display="none"
-app.style.display="block"
-hello.innerText="Xin chào, "+u
+let user=document.getElementById("username").value
+if(!user)return
+localStorage.setItem("user",user)
+document.getElementById("hello").innerText="Xin chào, "+user
+document.getElementById("login").style.display="none"
+alert("Đăng nhập thành công")
 }
 
-start()
-
-function logout(){
-localStorage.removeItem("user")
-location.reload()
+function closeLogin(){
 }
 
 function toggleMenu(){
 sidebar.classList.toggle("active")
-userDrop.style.display="none"
+userMenu.style.display="none"
 }
 
 function toggleUser(){
-userDrop.style.display=
-userDrop.style.display=="block"?"none":"block"
+userMenu.style.display=
+userMenu.style.display=="block"?"none":"block"
 sidebar.classList.remove("active")
 }
 
-function openSupport(){
-support.style.display="flex"
+function logout(){
+localStorage.clear()
+location.reload()
 }
 
-function openBuy(){
-buy.style.display="flex"
-calc()
+function reload(){
+location.reload()
 }
 
-function updatePopup(){
-update.style.display="flex"
+function support(){
+document.getElementById("support").style.display="flex"
+sidebar.classList.remove("active")
 }
 
-function closeAll(){
-document.querySelectorAll(".popup").forEach(p=>p.style.display="none")
+function closeSupport(){
+document.getElementById("support").style.display="none"
+}
+
+function buy(){
+document.getElementById("buy").style.display="flex"
+}
+
+function closeBuy(){
+document.getElementById("buy").style.display="none"
 }
 
 function calc(){
-let price=10000
-let qty=document.getElementById("qty").value||1
-total.innerText=price*qty
+let q=document.getElementById("qty").value
+document.getElementById("total").innerText=(q*price)+"đ"
+}
+
+function coming(){
+document.getElementById("coming").style.display="flex"
+}
+
+function closeComing(){
+document.getElementById("coming").style.display="none"
 }
 
 window.onclick=e=>{
-if(e.target.classList.contains("popup"))
-closeAll()
+if(e.target.classList.contains("popup")){
+e.target.style.display="none"
 }
+}
+
 </script>
 
 </body>
