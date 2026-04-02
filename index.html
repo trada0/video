@@ -6,7 +6,6 @@
 <title>WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -19,71 +18,75 @@ background:#f5f5f5;
 }
 
 /* HEADER */
-
 .header{
-background:#e9e9e9;
-padding:15px 60px;
+background:#eee;
+padding:15px;
 text-align:center;
 font-weight:bold;
-font-size:clamp(16px,2.5vw,22px);
-position:relative;
+font-size:clamp(16px,2vw,22px);
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .menu-btn{
 position:absolute;
-left:10px;
+left:15px;
 top:50%;
 transform:translateY(-50%);
 cursor:pointer;
+font-size:20px;
 border:1px solid #ccc;
-padding:5px 10px;
+padding:6px 10px;
 background:white;
 }
 
-.user{
+.user-box{
 position:absolute;
-right:10px;
+right:15px;
 top:50%;
 transform:translateY(-50%);
 display:flex;
 align-items:center;
 gap:8px;
 cursor:pointer;
-font-size:clamp(12px,2vw,14px);
 }
 
-.user img{
-width:32px;
-height:32px;
+.user-box img{
+width:34px;
+height:34px;
 border-radius:50%;
 }
 
-/* SIDEBAR */
+@media(max-width:768px){
+.user-text{
+display:none;
+}
+}
 
+/* SIDEBAR */
 .sidebar{
 position:fixed;
-left:-260px;
 top:0;
+left:-260px;
 width:260px;
 height:100%;
 background:white;
-box-shadow:2px 0 10px rgba(0,0,0,0.2);
+box-shadow:0 0 15px rgba(0,0,0,0.2);
 transition:0.3s;
-z-index:999;
 padding-top:60px;
+z-index:999;
 }
 
 .sidebar.active{
 left:0;
 }
 
-.sidebar .close{
-position:absolute;
-right:10px;
-top:10px;
-cursor:pointer;
-border:1px solid #ccc;
-padding:5px 10px;
+@media(max-width:768px){
+.sidebar{
+width:100%;
+left:-100%;
+}
 }
 
 .sidebar div{
@@ -92,72 +95,78 @@ border-bottom:1px solid #eee;
 cursor:pointer;
 }
 
-.sidebar div:hover{
-background:#f2f2f2;
+.close-sidebar{
+position:absolute;
+top:10px;
+right:10px;
+border:1px solid #ccc;
+padding:5px 8px;
+cursor:pointer;
+}
+
+.close-sidebar:hover{
+background:red;
+color:white;
 }
 
 /* CONTAINER */
-
 .container{
-width:100%;
 max-width:900px;
 margin:auto;
-padding:20px;
+padding:20px 15px;
 }
 
 /* POST */
-
 .post{
 background:white;
-padding:20px;
+padding:18px;
 border-radius:8px;
-transition:0.3s;
+transition:0.25s;
 position:relative;
 width:100%;
 }
 
 .post:hover{
 transform:translateY(-5px);
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .post-title{
 font-weight:bold;
-padding-right:120px;
-font-size:clamp(14px,2vw,16px);
+padding-right:140px;
+font-size:clamp(14px,1.5vw,18px);
 }
 
 .buy-btn{
 position:absolute;
-right:20px;
-top:20px;
+right:15px;
+top:15px;
 background:red;
 color:white;
 border:none;
 padding:10px 18px;
-font-size:clamp(12px,2vw,14px);
 cursor:pointer;
-border-radius:5px;
+font-size:clamp(13px,1.3vw,16px);
+border-radius:4px;
 }
 
 .sl{
-display:inline-block;
 border:1px solid #ccc;
-padding:5px 10px;
+display:inline-block;
+padding:6px 10px;
 margin-top:12px;
-font-size:clamp(12px,2vw,14px);
+font-size:14px;
 }
 
 .price{
-display:inline-block;
 border:1px solid #ccc;
-padding:5px 10px;
+display:inline-block;
+padding:6px 10px;
 margin-top:6px;
-font-size:clamp(12px,2vw,14px);
+font-size:14px;
 }
 
 /* POPUP */
-
 .popup{
 position:fixed;
 top:0;
@@ -172,135 +181,129 @@ z-index:9999;
 padding:15px;
 }
 
-.popup-content{
+.popup-box{
 background:white;
 padding:20px;
 width:100%;
 max-width:420px;
-position:relative;
 border-radius:8px;
+position:relative;
+animation:pop .2s ease;
 }
 
-.close-popup{
+@keyframes pop{
+from{transform:scale(.9);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+.close{
 position:absolute;
-right:10px;
-top:10px;
-cursor:pointer;
+top:8px;
+right:8px;
 border:1px solid #ccc;
-padding:5px 10px;
+padding:4px 8px;
+cursor:pointer;
+background:white;
 }
 
-.close-popup:hover{
+.close:hover{
 background:red;
 color:white;
 }
 
 .btn{
 padding:12px;
-margin-top:10px;
 border:1px solid #ccc;
 cursor:pointer;
 text-align:center;
-font-size:14px;
+margin-top:12px;
+border-radius:4px;
 }
 
-.ok{
-border:1px solid green;
+.btn.green{
+border:2px solid green;
 }
 
 .input-row{
 display:flex;
 gap:10px;
-margin-top:10px;
+margin-top:12px;
 align-items:center;
-}
-
-.input-row div{
-flex:2;
-font-size:14px;
 }
 
 .input-row input{
 flex:1;
 padding:8px;
-width:100%;
-}
-
-.total{
 border:1px solid #ccc;
-padding:10px;
-margin-top:10px;
-font-size:14px;
-}
-
-.pay{
-background:#2196f3;
-color:white;
 }
 
 .dropdown{
 position:absolute;
-right:0;
-top:45px;
+right:10px;
+top:55px;
 background:white;
 border:1px solid #ccc;
 display:none;
-min-width:160px;
+min-width:180px;
+z-index:99;
 }
 
 .dropdown div{
-padding:10px;
+padding:12px;
 cursor:pointer;
+border-bottom:1px solid #eee;
 }
 
 .dropdown div:hover{
-background:#eee;
+background:#f5f5f5;
 }
 
-/* MOBILE */
-
-@media(max-width:600px){
-
-.buy-btn{
-position:static;
-margin-top:10px;
-width:100%;
-}
+@media(max-width:500px){
 
 .post-title{
 padding-right:0;
+margin-bottom:10px;
+}
+
+.buy-btn{
+position:relative;
+right:auto;
+top:auto;
+width:100%;
+margin-top:10px;
 }
 
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="header">
+
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 WEBSITE BÁN CLONE FACEBOOK TỰ ĐỘNG
 
-<div class="user" onclick="toggleUser()">
-Xin chào, vangng
+<div class="user-box" onclick="toggleUser()">
+<span class="user-text">Xin chào, vangng</span>
 <img src="https://d2eioyamun8mp1.cloudfront.net/images/1775035619870_jvaiHdVTeM.jpg">
+</div>
 
 <div class="dropdown" id="userDrop">
 <div>Thông Tin Tài Khoản</div>
-<div onclick="alertUpdate()">Đăng Xuất</div>
+<div onclick="updatePopup()">Đăng Xuất</div>
 </div>
 
 </div>
-</div>
 
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-<div class="close" onclick="toggleMenu()">←</div>
-<div onclick="reload()">Trang Chủ</div>
-<div onclick="alertUpdate()">Nạp Tiền</div>
-<div onclick="openSupport()">Hỗ Trợ</div>
-<div onclick="alertUpdate()">Lịch Sử Giao Dịch</div>
+<div class="close-sidebar" onclick="toggleMenu()">←</div>
+<div onclick="location.reload()">Trang chủ</div>
+<div onclick="updatePopup()">Nạp tiền</div>
+<div onclick="openSupport()">Hỗ trợ</div>
+<div onclick="updatePopup()">Lịch sử giao dịch</div>
 </div>
 
 <div class="container">
@@ -312,7 +315,7 @@ TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 
 <button class="buy-btn" onclick="openBuy()">Mua ngay</button>
 
-<div class="sl">Số lượng: 10</div>
+<div class="sl">Số lượng:10</div>
 <br>
 <div class="price">Giá: 10000đ</div>
 
@@ -320,11 +323,11 @@ TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 
 </div>
 
+
 <!-- SUPPORT -->
 <div class="popup" id="support">
-<div class="popup-content">
-
-<div class="close-popup" onclick="closePopup()">X</div>
+<div class="popup-box">
+<div class="close" onclick="closeAll()">X</div>
 
 <div class="btn" onclick="window.open('https://zalo.me/0347241585')">
 Zalo
@@ -339,9 +342,9 @@ Facebook
 
 <!-- BUY -->
 <div class="popup" id="buy">
-<div class="popup-content">
+<div class="popup-box">
 
-<div class="close-popup" onclick="closePopup()">X</div>
+<div class="close" onclick="closeAll()">X</div>
 
 <div>
 TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
@@ -352,77 +355,73 @@ TÀI KHOẢN TẠO 2 THÁNG, 1K-2KFR, 2FA, MAIL NHẬN ĐƯỢC CODE
 <input type="number" id="qty" value="1" oninput="calc()">
 </div>
 
-<div class="total" id="total">
-THÀNH TIỀN: 10000đ
+<div class="btn">
+THÀNH TIỀN: <span id="total">10000</span>đ
 </div>
 
-<div class="btn pay" onclick="alertUpdate()">THANH TOÁN</div>
+<div class="btn" onclick="updatePopup()">
+THANH TOÁN
+</div>
 
 </div>
 </div>
 
-<!-- ALERT -->
-<div class="popup" id="alert">
-<div class="popup-content">
+<!-- UPDATE -->
+<div class="popup" id="update">
+<div class="popup-box">
 
-<div style="font-size:18px;margin-bottom:15px">
+<div class="close" onclick="closeAll()">X</div>
+
+<div style="font-size:18px;margin-bottom:10px;">
 TÍNH NĂNG SẼ ĐƯỢC ADMIN UPDATE SAU
 </div>
 
-<div class="btn ok" onclick="closePopup()">OK</div>
+<div class="btn green" onclick="closeAll()">OK</div>
 
 </div>
 </div>
 
 <script>
 
-let price = 10000;
-
-function calc(){
-let q = document.getElementById("qty").value || 1
-document.getElementById("total").innerHTML =
-"THÀNH TIỀN: "+(q*price)+"đ"
-}
-
 function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("active")
-document.getElementById("userDrop").style.display="none"
+sidebar.classList.toggle("active")
+userDrop.style.display="none"
 }
 
 function toggleUser(){
-let d = document.getElementById("userDrop")
-d.style.display = d.style.display=="block"?"none":"block"
-document.getElementById("sidebar").classList.remove("active")
+userDrop.style.display=
+userDrop.style.display=="block"?"none":"block"
+sidebar.classList.remove("active")
 }
 
 function openSupport(){
-document.getElementById("support").style.display="flex"
+support.style.display="flex"
 }
 
 function openBuy(){
-document.getElementById("buy").style.display="flex"
+buy.style.display="flex"
+calc()
 }
 
-function alertUpdate(){
-document.getElementById("alert").style.display="flex"
+function updatePopup(){
+update.style.display="flex"
 }
 
-function closePopup(){
-document.querySelectorAll(".popup").forEach(p=>{
-p.style.display="none"
-})
+function closeAll(){
+document.querySelectorAll(".popup")
+.forEach(p=>p.style.display="none")
 }
 
-function reload(){
-location.reload()
+function calc(){
+let price=10000
+let qty=document.getElementById("qty").value||1
+total.innerText=price*qty
 }
 
 window.onclick=function(e){
-document.querySelectorAll(".popup").forEach(p=>{
-if(e.target==p){
-p.style.display="none"
+if(e.target.classList.contains("popup")){
+closeAll()
 }
-})
 }
 
 </script>
